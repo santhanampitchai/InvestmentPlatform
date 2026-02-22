@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/docker/" />
+  <Folder Name="/docs/" />
+  <Folder Name="/src/">
+    <Project Path="InvestmentPlatform.API/InvestmentPlatform.API.csproj" />
+    <Project Path="InvestmentPlatform.Application/InvestmentPlatform.Application.csproj" />
+    <Project Path="InvestmentPlatform.Contracts/InvestmentPlatform.Contracts.csproj" />
+    <Project Path="InvestmentPlatform.Infrastructure/InvestmentPlatform.Infrastructure.csproj" />
+    <Project Path="IsnvestmentPlatform.Domain/InvestmentPlatform.Domain.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/InvestmentPlatform.IntegrationTests/" />
+  <Folder Name="/tests/InvestmentPlatform.UnitTests/" />
+</Solution>
