@@ -17,8 +17,20 @@ public class InvestmentsController : ControllerBase
     public async Task<IActionResult> Create(
         CreateInvestmentCommand command)
     {
-        var id = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id }, id);
+        var result = await _mediator.Send(command);
+
+        if (result.IsFailure)
+        {
+            return BadRequest(new
+            {
+                code = result.Error!.Code,
+                message = result.Error!.Message
+            });
+        }
+
+        return CreatedAtAction(nameof(GetById),
+            new { id = result.Value },
+            result.Value);
     }
     [HttpGet]
     public async Task<IActionResult> GetById(Guid id)

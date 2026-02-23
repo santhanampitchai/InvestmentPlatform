@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using InvestmentPlatform.Domain.Common;
 
 public record CreateInvestmentCommand(
     string Name,
@@ -6,4 +7,4 @@ public record CreateInvestmentCommand(
     decimal Amount,
     int Quantity,
     DateTime PurchaseDate
-) : IRequest<Guid>;
+) : IRequest<Result<Guid>>;

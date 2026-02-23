@@ -1,27 +1,28 @@
-﻿using MediatR;
+﻿using InvestmentPlatform.Application.Common.Interfaces;
+
+using InvestmentPlatform.Domain.Common;
 using InvestmentPlatform.Domain.Entities;
-using InvestmentPlatform.Application.Common.Interfaces;
+using MediatR;
 
 public class CreateInvestmentHandler
-    : IRequestHandler<CreateInvestmentCommand, Guid>
+    : IRequestHandler<CreateInvestmentCommand, Result<Guid>>
 {
     private readonly IInvestmentRepository _repository;
     private readonly ICurrentUserService _currentUser;
 
     public CreateInvestmentHandler(
         IInvestmentRepository repository,
-        ICurrentUserService currentUser
-        )
+        ICurrentUserService currentUser)
     {
         _repository = repository;
         _currentUser = currentUser;
     }
 
-    public async Task<Guid> Handle(
+    public async Task<Result<Guid>> Handle(
         CreateInvestmentCommand request,
         CancellationToken cancellationToken)
     {
-        var investment = new Investment(
+        var result = Investment.Create(
             _currentUser.UserId,
             request.Name,
             request.Type,
@@ -29,9 +30,12 @@ public class CreateInvestmentHandler
             request.Quantity,
             request.PurchaseDate);
 
-        await _repository.AddAsync(investment, cancellationToken);
+        if (result.IsFailure)
+            return Result<Guid>.Failure(result.Error!);
+
+        await _repository.AddAsync(result.Value!, cancellationToken);
         await _repository.SaveChangesAsync(cancellationToken);
 
-        return investment.Id;
+        return Result<Guid>.Success(result.Value!.Id);
     }
 }
