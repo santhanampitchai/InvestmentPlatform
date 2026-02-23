@@ -1,10 +1,15 @@
+using InvestmentPlatform.API.Services;
 using InvestmentPlatform.Application;
+using InvestmentPlatform.Application.Interfaces;
 using InvestmentPlatform.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 builder.Services.AddControllers();
 builder.Services.AddApplication();

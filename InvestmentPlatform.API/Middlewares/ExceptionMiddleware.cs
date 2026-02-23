@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
-
-
+using InvestmentPlatform.Domain.Exceptions;
+using FluentValidation;
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
@@ -29,23 +29,47 @@ public class ExceptionMiddleware
         }
     }
 
-    private static Task HandleExceptionAsync(
+    private static async Task HandleExceptionAsync(
         HttpContext context,
         Exception exception)
     {
         context.Response.ContentType = "application/json";
 
-        var response = new
+        var response = new object();
+        var statusCode = HttpStatusCode.InternalServerError;
+
+        switch (exception)
         {
-            status = (int)HttpStatusCode.InternalServerError,
-            message = "An unexpected error occurred.",
-            detail = exception.Message
-        };
+            case DomainException domainEx:
+                statusCode = HttpStatusCode.BadRequest;
+                response = new
+                {
+                    error = domainEx.ErrorCode,
+                    message = domainEx.Message
+                };
+                break;
 
-        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            case ValidationException validationEx:
+                statusCode = HttpStatusCode.BadRequest;
+                response = new
+                {
+                    error = "VALIDATION_ERROR",
+                    message = validationEx.Errors.Select(e => e.ErrorMessage)
+                };
+                break;
 
-        return context.Response.WriteAsync(
+            default:
+                response = new
+                {
+                    error = "SERVER_ERROR",
+                    message = "An unexpected error occurred."
+                };
+                break;
+        }
+
+        context.Response.StatusCode = (int)statusCode;
+
+        await context.Response.WriteAsync(
             JsonSerializer.Serialize(response));
     }
 }
-
