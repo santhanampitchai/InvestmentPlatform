@@ -1,6 +1,6 @@
 using InvestmentPlatform.API.Services;
 using InvestmentPlatform.Application;
-using InvestmentPlatform.Application.Interfaces;
+using InvestmentPlatform.Application.Common.Interfaces;
 using InvestmentPlatform.Infrastructure;
 
 

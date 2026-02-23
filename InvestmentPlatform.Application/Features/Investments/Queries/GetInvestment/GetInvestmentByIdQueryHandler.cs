@@ -1,4 +1,5 @@
-﻿using InvestmentPlatform.Application.Interfaces;
+﻿using InvestmentPlatform.Application.Common.Interfaces;
+using InvestmentPlatform.Application.Features.Investments.DTOs;
 using InvestmentPlatform.Application.Investments.Queries.GetInvestment;
 using MediatR;
 

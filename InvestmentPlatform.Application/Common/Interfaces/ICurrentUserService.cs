@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InvestmentPlatform.Application.Interfaces
+namespace InvestmentPlatform.Application.Common.Interfaces
 {
     public interface ICurrentUserService
     {

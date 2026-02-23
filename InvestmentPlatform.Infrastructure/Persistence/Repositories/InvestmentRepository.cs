@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using InvestmentPlatform.Application.Interfaces;
 using InvestmentPlatform.Domain.Entities;
 using InvestmentPlatform.Infrastructure.Persistence;
+using InvestmentPlatform.Application.Common.Interfaces;
 
 namespace InvestmentPlatform.Infrastructure.Persistence.Repositories;
 

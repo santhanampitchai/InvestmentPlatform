@@ -1,4 +1,4 @@
-﻿using InvestmentPlatform.Application.Interfaces;
+﻿using InvestmentPlatform.Application.Common.Interfaces;
 using InvestmentPlatform.Infrastructure.Persistence;
 using InvestmentPlatform.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;

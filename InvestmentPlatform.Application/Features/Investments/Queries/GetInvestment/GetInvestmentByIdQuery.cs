@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using InvestmentPlatform.Application.Features.Investments.DTOs;
+using MediatR;
 
 namespace InvestmentPlatform.Application.Investments.Queries.GetInvestment;
 

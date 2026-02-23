@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using InvestmentPlatform.Domain.Entities;
-using InvestmentPlatform.Application.Interfaces;
+using InvestmentPlatform.Application.Common.Interfaces;
 
 public class CreateInvestmentHandler
     : IRequestHandler<CreateInvestmentCommand, Guid>

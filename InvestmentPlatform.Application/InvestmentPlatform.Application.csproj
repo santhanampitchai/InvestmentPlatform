@@ -16,4 +16,9 @@
     <ProjectReference Include="..\IsnvestmentPlatform.Domain\InvestmentPlatform.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Models\" />
+  </ItemGroup>
+
 </Project>

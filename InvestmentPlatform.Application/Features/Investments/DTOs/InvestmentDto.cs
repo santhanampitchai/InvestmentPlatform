@@ -1,4 +1,4 @@
-﻿namespace InvestmentPlatform.Application.Investments;
+﻿namespace InvestmentPlatform.Application.Features.Investments.DTOs;
 
 public class InvestmentDto
 {

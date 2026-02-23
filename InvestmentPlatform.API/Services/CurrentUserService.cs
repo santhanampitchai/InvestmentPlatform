@@ -1,5 +1,4 @@
-﻿using InvestmentPlatform.Application.Interfaces;
-
+﻿using InvestmentPlatform.Application.Common.Interfaces;
 using System.Security.Claims;
 
 namespace InvestmentPlatform.API.Services;
