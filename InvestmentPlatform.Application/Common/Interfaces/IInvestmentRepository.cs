@@ -1,5 +1,4 @@
 ﻿using InvestmentPlatform.Domain.Entities;
-using InvestmentPlatform.Domain.Entities;
 
 namespace InvestmentPlatform.Application.Common.Interfaces;
 
